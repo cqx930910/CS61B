@@ -57,15 +57,11 @@ public class Rasterer {
      **/
     public Map<String, Object> getMapRaster(Map<String, Double> params) {
 //        System.out.println(params);
-        Map<String, Object> results = new HashMap<>();
         QuadTree test = new QuadTree();
         test.insert(MapServer.ROOT_ULLON,MapServer.ROOT_ULLAT,MapServer.ROOT_LRLON,MapServer.ROOT_LRLAT,"");
         test.treeConstruct(test.getRoot());
         PriorityQueue<Node> track =test.search(test.getRoot(),params.get("lrlon"),params.get("ullon"),params.get("w"),params.get("ullat"),params.get("lrlat"));
         return  QuadTree.tracktoResults(track);
-    }
-    public static void main (String [] args){
-
     }
 
 }
